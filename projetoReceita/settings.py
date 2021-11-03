@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 import os
 from pathlib import Path
 
@@ -130,6 +131,15 @@ STATICFILES_DIRS = [
 # Media
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Messages
+
+# Criando mensagens de erro e de sucesso.
+MESSAGE_TAGS = {
+    # danger e success vem da biblioteca bootstrap
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

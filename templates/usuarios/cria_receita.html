@@ -22,6 +22,8 @@
            </div>
        </div>
  
+        <!--Incluindo mensagens de erros-->
+        {% include 'partials/_alertas.html' %}
        <div class="row">
            <div class="col-12">
            <p>Todos os campos são obrigatórios</p>
@@ -31,31 +33,31 @@
                        <div class="row">
                            <div class="col-12 col-lg-12">
                                <label for="nome_receita"><b>Título da receita</b></label>
-                               <input type="text" id="nome_receita" class="form-control" name="nome_receita" placeholder="Ex. Suco de limão" required>
+                               <input type="text" id="nome_receita" class="form-control" name="nome_receita" placeholder="Ex. Suco de limão" required value={{nome_receita}}>
                            </div>
                            <div class="col-12">
                                <label for="file"><b>Ingredientes</b></label>
-                               <textarea class="form-control" name="ingredientes" cols="30" rows="10" placeholder="Ex. 2 Limões &#10;200ml de água" required></textarea>
+                               <textarea class="form-control" name="ingredientes" cols="30" rows="10" placeholder="Ex. 2 Limões &#10;200ml de água" required value={{ingredientes}}></textarea>
                            </div>
                            <div class="col-12">
                                <label for="file"><b>Modo de preparo</b></label>
-                               <textarea class="form-control" name="modo_preparo" cols="30" rows="10" placeholder="Ex. Corte o limão com cuidado e exprema no copo  &#10;Misture com a água e sirva." required></textarea>
+                               <textarea class="form-control" name="modo_preparo" cols="30" rows="10" placeholder="Ex. Corte o limão com cuidado e exprema no copo  &#10;Misture com a água e sirva." required value={{modo_preparo}}></textarea>
                            </div>
                            <div class="col-12 col-lg-3">
                                <label for="file"><b>Tempo de preparo (minutos)</b></label>
-                               <input type="number" class="form-control" name="tempo_preparo" placeholder="Ex. 2" required>
+                               <input type="number" class="form-control" name="tempo_preparo" placeholder="Ex. 2" required value={{tempo_preparo}}>
                            </div>
                            <div class="col-12 col-lg-3">
                                <label for="file"><b>Rendimento</b></label>
-                               <input type="text" class="form-control" name="rendimento" placeholder="Ex. serve 1 pessoa" required>
+                               <input type="text" class="form-control" name="rendimento" placeholder="Ex. serve 1 pessoa" required value={{rendimento}}>
                            </div>
                            <div class="col-12 col-lg-3">
                                <label for="file"><b>Categoria da receita</b></label>
-                               <input type="text" class="form-control" name="categoria" placeholder="Ex. Sucos e bebidas" required>
+                               <input type="text" class="form-control" name="categoria" placeholder="Ex. Sucos e bebidas" required value={{categoria}}>
                            </div>
                            <div class="col-12 col-lg-3">
                                <label for="file"><b>Foto</b></label>
-                               <input type="file" class="form-control" name="foto_receita" required>
+                               <input type="file" class="form-control" name="foto_receita" required value={{foto_receita}}>
                            </div>
                            <div class="col-12 text-center">
                                <button class="btn delicious-btn mt-30" type="submit">Criar sua receita</button>
