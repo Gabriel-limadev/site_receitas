@@ -75,7 +75,7 @@ def login(request):
         senha = request.POST['senha']
 
         # Verificando se o email e senha estão preenchidos, caso não estejam a pagina será recarregada
-        if campo_vazio(email) == '' or campo_vazio(senha) == '':
+        if campo_vazio(email) or campo_vazio(senha):
             # implementando mensagens de erro
             messages.error(
                 request, 'Os campos email ou senha não podem ficar em branco')
@@ -97,7 +97,15 @@ def login(request):
                 # implementando mensagens de sucesso
                 messages.success(request, 'Login realizado com sucesso')
                 return redirect('dashboard')
+            else:
+                messages.error(
+                    request, 'Email ou senha incorretos')
+                return redirect('login')
 
+        else:
+            messages.error(
+                request, 'Email não cadastrado')
+            return redirect('login')
     return render(request, 'usuarios/login.html')
 
 
@@ -124,37 +132,6 @@ def logout(request):
     # Realizando logout do usuario e redirecionando ao index
     auth.logout(request)
     return redirect('index')
-
-
-def cria_receita(request):
-    if request.method == "POST":
-        # 'nome_receita'  vindo da tag name do cria_receita.html
-        nome_receita = request.POST['nome_receita']
-        # 'ingredientes'  vindo da tag name do cria_receita.html
-        ingredientes = request.POST['ingredientes']
-        # 'modo_preparo'  vindo da tag name do cria_receita.html
-        modo_preparo = request.POST['modo_preparo']
-        # 'tempo_preparo' vindo da tag name do cria_receita.html
-        tempo_preparo = request.POST['tempo_preparo']
-        # 'rendimento'    vindo da tag name do cria_receita.html
-        rendimento = request.POST['rendimento']
-        # 'categoria'     vindo da tag name do cria_receita.html
-        categoria = request.POST['categoria']
-        # 'foto_receita'  vindo da tag name do cria_receita.html -> FILES -- Para trazer o arquivo da foto
-        foto_receita = request.FILES['foto_receita']
-
-        user = get_object_or_404(User, pk=request.user.id)
-
-        receita = Receita.objects.create(
-            pessoa=user, nome_receita=nome_receita, ingredientes=ingredientes, modo_preparo=modo_preparo,
-            tempo_preparo=tempo_preparo, rendimento=rendimento, categoria=categoria, foto_receita=foto_receita)
-
-        receita.save()
-
-        return redirect('dashboard')
-
-    else:
-        return render(request, 'usuarios/cria_receita.html  ')
 
 
 def campo_vazio(campo):
