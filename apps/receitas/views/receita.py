@@ -2,21 +2,29 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth, messages
 from receitas.models import Receita
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
 
 def index(request):
-    receitas = Receita.objects.order_by('-date_receita').filter(publicada=True)
+    """ Retorna a página index do site com as receitas """
+    receitas = Receita.objects.order_by('-date_receita')
+
+    # Implementando um paginator
+    paginator = Paginator(receitas, 3)
+    page = request.GET.get('page')
+    receitas_por_pagina = paginator.get_page(page)
 
     dados = {
-        'receitas': receitas
+        'receitas': receitas_por_pagina
     }
 
     return render(request, 'receitas/index.html', dados)
 
 
 def receita(request, receita_id):
+    """ Retorna informações especificas sobre uma receita """
     receita = get_object_or_404(Receita, pk=receita_id)
 
     receita_exibir = {
@@ -26,6 +34,7 @@ def receita(request, receita_id):
 
 
 def cria_receita(request):
+    """ Cria uma receita """
     if request.method == "POST":
         # Pegando os dados vindo do usuario
         nome_receita = request.POST['nome_receita']
@@ -66,6 +75,7 @@ def cria_receita(request):
 
 
 def edita_receita(request, receita_id):
+    """ Edita uma receita do usuário """
     receita = get_object_or_404(Receita, pk=receita_id)
     receita_a_editar = {'receita': receita}
 
@@ -73,6 +83,7 @@ def edita_receita(request, receita_id):
 
 
 def atualiza_receita(request):
+    """ Atualiza a receita editada """
     if request.method == 'POST':
         receita_id = request.POST['receita_id']
         r = Receita.objects.get(pk=receita_id)
@@ -102,6 +113,12 @@ def atualiza_receita(request):
 
 
 def deleta_receita(request, receita_id):
+    """ Deleta uma receita do usuário """
     receita = get_object_or_404(Receita, pk=receita_id)
     receita.delete()
     return redirect('dashboard')
+
+
+def campo_vazio(campo):
+    """ Verifica se o campo é vazio ou não """
+    return not campo.strip()

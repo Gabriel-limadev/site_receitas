@@ -7,6 +7,7 @@ from receitas.models import Receita
 
 
 def cadastro(request):
+    """ Cadastra uma nova pessoa no sistema """
     # Fazemos algumas validações na view para que as infromações do usuario estejam corretas
     if request.method == 'POST':
         # 'nome' vindo da tag name do cadastro.html
@@ -67,6 +68,7 @@ def cadastro(request):
 
 
 def login(request):
+    """ Realiza um login de uma pessoa no sistema """
     # Realizando validações
     if request.method == 'POST':
         # 'email' vindo da tag name do login.html
@@ -110,6 +112,7 @@ def login(request):
 
 
 def dashboard(request):
+    """ Encaminha a pessoa logada para sua página de dashboard """
     # Se o usuario estiver logado ele consegue ver a pagina de dashboard, caso contrario ele será redirecionado para a index
     if request.user.is_authenticated:
         # Criando receitas de acordo com o id do usuario
@@ -129,14 +132,17 @@ def dashboard(request):
 
 
 def logout(request):
+    """ Realiza o logout do usuario """
     # Realizando logout do usuario e redirecionando ao index
     auth.logout(request)
     return redirect('index')
 
 
 def campo_vazio(campo):
+    """ Verifica se o campo é vazio ou não """
     return not campo.strip()
 
 
 def senhas_nao_sao_iguais(senha, senha2):
+    """ Verifica se as senhas são iguais ou não """
     return senha != senha2
