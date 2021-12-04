@@ -1,1 +1,1 @@
-web: gunicorn projetoReceita.wsgi
+web : gunicorn projetoReceita.wsgi
