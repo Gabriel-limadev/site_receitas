@@ -1,6 +1,6 @@
 <!-- Logo -->
 <div align="center">
-<img  src="static/img/core-img/logo.png"/> <br> <br>
+<img  src="static/img/core-img/logo2.png"/> <br> <br>
 </div>
 
 <div align="center">
