@@ -17,4 +17,4 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Esse é um website feito para quem necessita consultar ou cadastrar receitas.
 
-Este é um projeto desenvolvido ncom a equipe **[Alura](https://www.alura.com.br/)**
+Este é um projeto desenvolvido com a equipe **[Alura](https://www.alura.com.br/)**
