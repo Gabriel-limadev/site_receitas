@@ -23,8 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8j#=9^h(*q-)lacrcq*+y6q91%pb61grnos5ysh4god4w%mxi%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,15 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'projetoReceita.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'projeto_receitas.db',
-    }
-}
 
 
 # Password validation
@@ -153,3 +143,10 @@ sys.path.insert(0, os.path.join(PROJECT_ROOT, '../apps'))
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+
+# Settings Locais
+try:
+    from projetoReceita.settings_local import *
+except ImportError:
+    print('erro')

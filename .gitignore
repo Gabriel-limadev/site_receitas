@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Settings_local
+projeto_receitas/settings_local.py
+
 # MEDIA
 media/
 

@@ -71,7 +71,7 @@ def cria_receita(request):
         return redirect('dashboard')
 
     else:
-        return render(request, 'receitas/cria_receita.html  ')
+        return render(request, 'receitas/cria_receita.html')
 
 
 def edita_receita(request, receita_id):
