@@ -1,10 +1,10 @@
 <!-- Logo -->
 <div align="center">
-<img  src="static/img/core-img/logo2.png"/> <br> <br>
+<img  src="projetoReceita/static/img/core-img/logo2.png"/> <br> <br>
 </div>
 
 <div align="center">
-<img  src="static/img/bg-img/tomate_banner.jpg"/> <br>
+<img  src="projetoReceita/static/img/bg-img/tomate_banner.jpg"/> <br>
 
 </div>
 
